@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-primary: #1e3a8a;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #172554;
+  --color-success: #059669;
+}
+
+:root {
+  --bg-app: #f8fafc;
+  --text-app: #0f172a;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-card: #0f172a;
+  --border-card: #e2e8f0;
+  --text-muted: #64748b;
+  --bg-sec-card: #f8fafc;
+}
+
+:root.dark {
+  --bg-app: #0b0f19;
+  --text-app: #f1f5f9;
+  --bg-card: #111827;
+  --bg-input: #1f2937;
+  --text-card: #f9fafb;
+  --border-card: #374151;
+  --text-muted: #9ca3af;
+  --bg-sec-card: #1f2937;
+}
+
+html {
+  transition: background-color 0.2s ease, color 0.15s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-app);
+  zoom: 1.2; /* Default zoom: 20% larger as requested */
+  transition: background-color 0.2s ease, color 0.15s ease;
+}
+
+/* Day/Night dark mode rule overrides */
+.dark body {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .bg-white {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-300,
+.dark .border-slate-100 {
+  border-color: #374151 !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-slate-50\/45,
+.dark .bg-slate-50\/50 {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+.dark input::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark .no-print.bg-white {
+  background-color: #111827 !important;
+  border-color: #374151 !important;
+}
+
+.dark .divide-slate-200 > * + * {
+  border-color: #374151 !important;
+}
+
+.dark .divide-y > * + * {
+  border-color: #374151 !important;
+}
+
+/* Modals */
+.dark .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* QR Code Modal target cards */
+.dark .bg-white.rounded-2xl {
+  background-color: #111827 !important;
+  border: 1px solid #374151 !important;
+}
+
+.dark .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+/* Tab buttons state */
+.dark button.text-slate-600 {
+  color: #9ca3af !important;
+}
+
+.dark button.text-slate-600:hover {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Tooltips */
+.dark .bg-white\/95 {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+/* Recharts Pie Chart root element */
+.dark #equipment-pie-chart-root {
+  background-color: #111827 !important;
+  border-color: #374151 !important;
+}
+
+.dark #equipment-pie-chart-root div {
+  color: #f3f4f6 !important;
+}
+
+.dark #equipment-pie-chart-root .text-slate-800 {
+  color: #f3f4f6 !important;
+}
+
+.dark #equipment-pie-chart-root .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+.dark #equipment-pie-chart-root .text-slate-600 {
+  color: #d1d5db !important;
+}
+
+.dark #equipment-pie-chart-root .text-slate-300 {
+  color: #4b5563 !important;
+}
+
+/* Screen utility for print elements */
+.only-print {
+  display: none !important;
+}
+
+/* Print utility styles specific to React App */
+@media print {
+  body {
+    zoom: 1.0 !important;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Override dark mode style overrides for print mode globally */
+  .dark body,
+  .dark .printable-document,
+  .dark .printable-document *,
+  .dark .only-print,
+  .dark .only-print * {
+    background-color: white !important;
+    background: white !important;
+    color: black !important;
+    border-color: #cbd5e1 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide every single element on the web page by default to prevent layout clutter */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Make ONLY our defined printable report document Card and its recursive children visible occupied */
+  .printable-document, .printable-document * {
+    visibility: visible;
+  }
+
+  .only-print {
+    display: block !important;
+  }
+
+  .only-print, .only-print * {
+    visibility: visible !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Absolute-position the printable document card to start at top-left of physical page, fitting A4 margins */
+  .printable-document {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+    border: none !important;
+  }
+
+  /* Force robust, beautiful Persian system fallback typography to avoid unreadable question marks or broken glyphs */
+  body, tr, td, th, h1, h2, h3, h4, span, div, p, strong, a, label, td * {
+    font-family: "Vazirmatn", "Tahoma", "Segoe UI", Arial, sans-serif !important;
+    color-scheme: light !important;
+    color: #000000 !important;
+  }
+
+  /* Configure standard portrait A4 margins to avoid clipping at edge of paper */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 10mm 15mm 10mm;
+  }
+}
+
+/* Styled scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

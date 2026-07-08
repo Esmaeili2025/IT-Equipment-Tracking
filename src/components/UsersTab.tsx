@@ -51,7 +51,7 @@ export default function UsersTab({ currentUser }: UsersTabProps) {
       })
       .catch(err => {
         console.error("Error loading users:", err);
-        setError(`خطا در بارگذاری لیست کاربران: ${err.message || err}. مطمئن شوید بک‌اند سیستم (Node.js) روی پورت 3000 فعال است و ماژول URL Rewrite روی وب‌سرور تنظیم شده است.`);
+        setError(`خطا در بارگذاری لیست کاربران: ${err.message || err}. مطمئن شوید بک‌اند سیستم (Node.js) روی پورت 3030 فعال است و ماژول URL Rewrite روی وب‌سرور تنظیم شده است.`);
         setLoading(false);
       });
 

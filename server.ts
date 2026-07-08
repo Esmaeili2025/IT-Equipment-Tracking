@@ -460,7 +460,7 @@ async function startServer() {
   initializeDatabase();
 
   const app = express();
-  const PORT = Number(process.env.PORT) || 3000;
+  const PORT = Number(process.env.PORT) || 3030;
 
   // Middleware for body parsing
   app.use(express.json({ limit: "50mb" }));
